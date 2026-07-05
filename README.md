@@ -20,6 +20,7 @@
 需要 Claude Pro / Max + 桌面版 App。
 
 1. 下载 `dist/clone-website-plugin.plugin`（本仓库自带，见下方直链）。
+👉 [点击下载 clone-website-plugin.plugin](https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/dist/clone-website-plugin.plugin)
 2. 打开 Claude 桌面 App → Cowork → 左侧 **Customize** → **Plugins** 标签。
 3. 点击 **Upload plugin**，选择刚下载的 `.plugin` 文件。
 4. 会弹出"未受 Anthropic 控制"的安全提示——这是所有第三方插件的标准提示，确认信任来源后继续。
@@ -28,9 +29,6 @@
    /clone-site
    ```
    Claude 会先问你要复刻哪个网站，回答后自动开始整套流程。
-
-直链下载（推送到 GitHub 后生效）：
-`https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/dist/clone-website-plugin.plugin`
 
 ## 安装方式二：Claude Code / Claude Cowork（通过 Marketplace）
 
