@@ -1,0 +1,15 @@
+{
+  "name": "clone-website-plugin",
+  "owner": { "name": "pmgwee" },
+  "version": "1.0.0",
+  "description": "1:1 网站视觉与动效复刻工具包：design-dna / web-shader-extractor / duck 三个技能 + /clone-site 一键流程",
+  "plugins": [
+    {
+      "name": "clone-website-plugin",
+      "source": "./",
+      "version": "1.0.0",
+      "description": "1:1 还原线上网站的视觉与动效",
+      "keywords": ["design", "clone", "reverse-engineering", "frontend", "animation"]
+    }
+  ]
+}

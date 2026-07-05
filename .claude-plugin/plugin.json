@@ -1,0 +1,6 @@
+{
+  "name": "clone-website-plugin",
+  "description": "1:1 还原线上网站的视觉与动效：全站取证 → Design DNA 提取 → 动效逆向 → 模块化重建 → 闭环验证。运行 /clone-site 开始。",
+  "version": "1.0.0",
+  "author": { "name": "pmgwee" }
+}
