@@ -1,43 +1,44 @@
 # Clone Website Plugin
 
-1:1 还原线上网站的视觉与动效：全站取证 → Design DNA 提取 → 动效逆向 → 模块化重建 → 闭环验证。
+**English | [中文](./README.zh.md)**
 
-包含三个技能（`skills/`）和一个一键流程命令（`commands/clone-site.md`）：
+1:1 restoration of a live website's visual design and animations: full-site evidence gathering → Design DNA extraction → animation reverse-engineering → modular rebuild → closed-loop verification.
 
-- **design-dna** — 把网站逆向成结构化 Design DNA JSON（颜色/字体/间距/版式/动效曲线...），作为
-  整个复刻项目的设计真值。
-- **web-shader-extractor** — 逆向 WebGL/Canvas/shader/滚动驱动动效，产出可本地运行的实现。
-- **duck** — 每个模块开工前的自我讲解，暴露隐藏假设。
-- **`/clone-site`** — 把以上三个技能串成完整流程，触发时会先确认你要复刻哪个网站。
+Includes three skills (`skills/`) and one one-click workflow command (`commands/clone-site.md`):
 
-⚠️ **使用须知**：请只对你自己拥有版权或已获授权的网站使用本工具（例如你自己的作品集/公司官网）。
-不要用来复刻他人受版权保护的商业网站并对外发布或商用。
+- **design-dna** — Reverse-engineers a website into a structured Design DNA JSON (colors/fonts/spacing/layout/animation curves...), serving as the single source of design truth for the whole cloning project.
+- **web-shader-extractor** — Reverse-engineers WebGL/Canvas/shader/scroll-driven animations, producing a locally runnable implementation.
+- **duck** — A self-talk-through step before starting each module, to surface hidden assumptions.
+- **`/clone-site`** — Chains the three skills above into a complete workflow; when triggered, it first confirms which website you want to clone.
+
+⚠️ **Usage notice**: Please only use this tool on websites you own the copyright to, or have been granted permission for (e.g. your own portfolio or a company website you're responsible for).
+Do not use it to clone someone else's copyrighted commercial website and then publish or monetize it.
 
 ---
 
-## 安装方式一：Claude Cowork（推荐非技术用户）
+## Installation Method 1: Claude Cowork (Recommended for non-technical users)
 
-需要 Claude Pro / Max + 桌面版 App。
+Requires Claude Pro / Max + the desktop App.
 
-1. 下载 `dist/clone-website-plugin.plugin`（本仓库自带，见下方直链）。<br>
-👉 [点击下载 clone-website-plugin.plugin](https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/dist/clone-website-plugin.plugin)
-2. 打开 Claude 桌面 App → Cowork → 左侧 **Customize** → **Plugins** 标签。
-3. 点击 **Upload plugin**，选择刚下载的 `.plugin` 文件。
-4. 会弹出"未受 Anthropic 控制"的安全提示——这是所有第三方插件的标准提示，确认信任来源后继续。
-5. 新开一个 Cowork 任务，输入：
+1. Download `dist/clone-website-plugin.plugin` (included in this repo, direct link below).<br>
+👉 [Click to download clone-website-plugin.plugin](https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/dist/clone-website-plugin.plugin)
+2. Open the Claude desktop App → Cowork → left sidebar **Customize** → **Plugins** tab.
+3. Click **Upload plugin**, and select the `.plugin` file you just downloaded.
+4. A "not controlled by Anthropic" security notice will pop up — this is the standard notice shown for all third-party plugins; confirm you trust the source and continue.
+5. Start a new Cowork task, and type:
    ```
    /clone-site
    ```
-   Claude 会先问你要复刻哪个网站，回答后自动开始整套流程。
-## 安装方式二：Claude Code / Claude Cowork（通过 Marketplace）
+   Claude will first ask which website you want to clone, and once you answer, it will automatically start the whole process.
 
-⚠️ **重要**：请在**真正的终端**里执行以下命令（独立终端、或 VS Code 的 **Terminal** 面板都可以），
-**不要**在 Claude Code 的聊天/插件侧边栏里打带斜杠的 `/plugin ...`——那是交互式 UI 命令，在部分
-环境（例如某些 IDE 插件的聊天面板）里会报 `"/plugin isn't available in this environment"`，这是
-已知限制。下面这套是普通终端命令，两边通用：
+## Installation Method 2: Claude Code / Claude Cowork (via Marketplace)
 
-一行一行执行，等第一行跑完确认成功，再跑第二行：
+⚠️ **Important**: Please run the following commands in an **actual terminal** (a standalone terminal, or VS Code's **Terminal** panel, both work).
+**Do not** type the slash-based `/plugin ...` in Claude Code's chat/plugin sidebar — that's an interactive UI command, and in some
+environments (e.g. certain IDE plugin chat panels) it will throw `"/plugin isn't available in this environment"`, which is a
+known limitation. Use the plain terminal commands below instead — they work in both places.
 
+Run them one line at a time; confirm the first line succeeded before running the second:
 ```
 claude plugin marketplace add pmgwee/clone-website-plugin
 ```
@@ -45,46 +46,43 @@ claude plugin marketplace add pmgwee/clone-website-plugin
 claude plugin install clone-website-plugin@clone-website-plugin
 ```
 
-安装后即可使用 `/clone-website-plugin:clone-site`，或视 Claude Code 版本而定直接用 `/clone-site`。
+Once installed, you can use `/clone-website-plugin:clone-site`, or just `/clone-site` depending on your Claude Code version.
 
-**懒得自己跑命令？** 打开终端里的 `claude`，把下面这句话直接发给它，让 Claude 自己执行：
-
+**Don't want to run the commands yourself?** Open `claude` in your terminal, and send it this message directly to let it execute for you:
 ```
-帮我安装 clone-website-plugin：在终端依次运行
+Help me install clone-website-plugin: in the terminal, run
 claude plugin marketplace add pmgwee/clone-website-plugin
-和
+and
 claude plugin install clone-website-plugin@clone-website-plugin
-每条跑完确认成功再跑下一条，不要一次性粘贴两条。
+in order, confirming each one succeeded before running the next — don't paste both at once.
 ```
 
+## Installation Method 3: Codex CLI / Gemini CLI and other non-Claude agents
 
-## 安装方式三：Codex CLI / Gemini CLI 等非 Claude 生态 Agent
-
-这些工具不认识 Claude 的 Plugin 格式，请改用 `docs/install.md` 里的"自举式"安装说明——
-把下面这句话发给你的 Agent 即可：
-
+These tools don't recognize Claude's Plugin format. Please use the "bootstrap-style" installation instructions in `docs/install.md` instead —
+just send this message to your Agent:
 ```
-帮我安装 clone-website-plugin：https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/docs/install.md
+Help me install clone-website-plugin: https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/docs/install.md
 ```
 
 ---
 
-## 目录结构
+## Directory Structure
 
 ```
 clone-website-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json        # 插件元数据
-│   └── marketplace.json   # 让本仓库自身可以被 /plugin marketplace add 安装
+│   ├── plugin.json        # Plugin metadata
+│   └── marketplace.json   # Lets this repo itself be installed via /plugin marketplace add
 ├── skills/
 │   ├── design-dna/SKILL.md
 │   ├── web-shader-extractor/SKILL.md
 │   └── duck/SKILL.md
 ├── commands/
-│   └── clone-site.md       # 一键流程命令（master prompt）
-├── .mcp.json                # 自动接好 Context7
+│   └── clone-site.md       # One-click workflow command (master prompt)
+├── .mcp.json                # Auto-wires up Context7
 ├── docs/
-│   └── install.md           # 给 Codex CLI / Gemini CLI 等 agent 用的自举安装说明
+│   └── install.md           # Bootstrap-style install instructions for agents like Codex CLI / Gemini CLI
 └── dist/
-    └── clone-website-plugin.plugin   # 打包好的插件文件，供 Cowork 直接上传
+    └── clone-website-plugin.plugin   # Packaged plugin file, for direct upload in Cowork
 ```
