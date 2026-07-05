@@ -29,15 +29,34 @@
    /clone-site
    ```
    Claude 会先问你要复刻哪个网站，回答后自动开始整套流程。
-
 ## 安装方式二：Claude Code / Claude Cowork（通过 Marketplace）
 
+⚠️ **重要**：请在**真正的终端**里执行以下命令（独立终端、或 VS Code 的 **Terminal** 面板都可以），
+**不要**在 Claude Code 的聊天/插件侧边栏里打带斜杠的 `/plugin ...`——那是交互式 UI 命令，在部分
+环境（例如某些 IDE 插件的聊天面板）里会报 `"/plugin isn't available in this environment"`，这是
+已知限制。下面这套是普通终端命令，两边通用：
+
+一行一行执行，等第一行跑完确认成功，再跑第二行：
+
 ```
-/plugin marketplace add pmgwee/clone-website-plugin
-/plugin install clone-website-plugin@clone-website-plugin
+claude plugin marketplace add pmgwee/clone-website-plugin
+```
+```
+claude plugin install clone-website-plugin@clone-website-plugin
 ```
 
 安装后即可使用 `/clone-website-plugin:clone-site`，或视 Claude Code 版本而定直接用 `/clone-site`。
+
+**懒得自己跑命令？** 打开终端里的 `claude`，把下面这句话直接发给它，让 Claude 自己执行：
+
+```
+帮我安装 clone-website-plugin：在终端依次运行
+claude plugin marketplace add pmgwee/clone-website-plugin
+和
+claude plugin install clone-website-plugin@clone-website-plugin
+每条跑完确认成功再跑下一条，不要一次性粘贴两条。
+```
+
 
 ## 安装方式三：Codex CLI / Gemini CLI 等非 Claude 生态 Agent
 
