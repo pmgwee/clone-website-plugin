@@ -19,7 +19,7 @@
 
 需要 Claude Pro / Max + 桌面版 App。
 
-1. 下载 `dist/clone-website-plugin.plugin`（本仓库自带，见下方直链）。
+1. 下载 `dist/clone-website-plugin.plugin`（本仓库自带，见下方直链）。<br><br>
 👉 [点击下载 clone-website-plugin.plugin](https://raw.githubusercontent.com/pmgwee/clone-website-plugin/main/dist/clone-website-plugin.plugin)
 2. 打开 Claude 桌面 App → Cowork → 左侧 **Customize** → **Plugins** 标签。
 3. 点击 **Upload plugin**，选择刚下载的 `.plugin` 文件。
